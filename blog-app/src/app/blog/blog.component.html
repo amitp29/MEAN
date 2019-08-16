@@ -5,18 +5,38 @@
     <div class="col-sm-5">  <!-- style="text-align: center"> -->
         <form class="ui form">
             <div class="field">
-                <label>First Name</label>
-                <input type="text" name="first-name" placeholder="First Name">
+                <label>Your Blog's Title</label>
+                <input type="text" name="blog-title" placeholder="Blog Title">
             </div>
             <div class="field">
-                <label>Last Name</label>
-                <input type="text" name="last-name" placeholder="Last Name">
+                <label> Your Full Name</label>
+                <input type="text" name="full-name" placeholder="Full Name">
             </div>
             <div class="field">
-                <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" class="hidden">
-                <label>I agree to the Terms and Conditions</label>
-                </div>
+              <label> Your Email ID</label>
+              <input type="text" name="email-id" placeholder="Email ID">
+            </div>
+            <div class="field">
+              <label>Your Blog Content</label>
+              <input type="text" name="blog-content" placeholder="Blog Content">
+            </div>
+            <div class="field">
+              <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>Hidden</label>
+              </div>
+            </div>
+            <div class="field">
+              <label>Votes</label>
+              <p>{{ votes }}</p>
+            </div>
+            <div class="field">
+              <label>Likes</label>
+              <p>{{ likes }}</p>
+            </div>
+            <div class="field">
+              <label>Dislikes</label>
+              <p>{{ dislikes }}</p>
             </div>
             <button class="ui button" type="submit">Submit</button>
         </form>
