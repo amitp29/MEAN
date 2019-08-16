@@ -110,6 +110,7 @@ app.get('/getBlogs/:id', (req, res) => {
     
 });
 
+// C'R'UD 
 // get all Blogs
 app.get('/getAllBlogs', async (req, res) => {
     result = await blogModel.find();
@@ -117,6 +118,7 @@ app.get('/getAllBlogs', async (req, res) => {
     
 });
 
+// C'R'UD 
 // URL - http://localhost:3000/getBlogsByEmail?email=blogger@anymail.com
 app.get('/getBlogsByEmail', (req, res) => {
     // let responseObj;
@@ -136,7 +138,7 @@ app.get('/getBlogsByEmail', (req, res) => {
     
 });
 
-
+// C'R'UD 
 // URl - http://localhost:3000/getBlogById/blogger@anymail.com
 app.get('/getBlogById/:id', (req, res) => {
     getBlogById(req.params.id)
@@ -176,6 +178,7 @@ app.delete('/deleteBlogById', (req, res) => {
 });
 
 // 'C'RUD
+// http://localhost:3000/addBlog
 app.post('/addBlog', (req, res) => {
     addBlogPOST(req.body)
         .then(finalResult => {
@@ -214,7 +217,10 @@ app.post('/addBlog', (req, res) => {
 
     */
 });
+
+
 // CR'U'D -  Update
+// http://localhost:3000/updateBlogById/5d564aeab99b4b2338d13bbf
 app.put('/updateBlogById/:id', (req, res) => {
     updateBlogById(req.params.id, req.body)
         .then(finalResult => {

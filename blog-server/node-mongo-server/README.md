@@ -8,6 +8,7 @@
 ~ npm run dev // or node app.js
 
 ~ Sample Request Body to adddBlog
+URL - http://localhost:3000/addBlog
 {
 	"title":  "a Blog",
 	"author": "John Doe",
