@@ -138,11 +138,15 @@ app.get('/getBlogsByEmail', (req, res) => {
 
 
 // URl - http://localhost:3000/getBlogById/blogger@anymail.com
-app.get('/getBlogById/:email', (req, res) => {
-    getBlogById(req.query.id)
+app.get('/getBlogById/:id', (req, res) => {
+    getBlogById(req.params.id)
     .then(finalResult => {
-        console.log("getBlogById..."+finalResult);  
-        res.send(finalResult)   
+        if(Object.keys(finalResult).length > 0) {
+            res.send(finalResult)   
+        } 
+        else if(Object.keys(finalResult).length === 0){
+            res.send("No data found for the id")   
+        }           
     })
     .catch(error=>{
         console.log("Error.."+error);   
