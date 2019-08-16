@@ -182,7 +182,7 @@ app.post('/addBlog', (req, res) => {
         })
         .catch(error=>{
             console.log("Error.."+error);    
-            res.send("Cannot Add Blog. Please Check your request!");
+            res.send("Cannot Add Blog. Please Check your request! \n"+error);
         });
     
     //res.send('Hello from express server!!'); // doesn't get printed with error Cannot set headers after they are sent to the client
