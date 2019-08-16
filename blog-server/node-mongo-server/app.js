@@ -97,12 +97,6 @@ app.get('/getBlogs', (req, res) => {
 
 // C'R'UD -  Retrieve One - Method 2 -> http://localhost:3000/getBlogs/122
 app.get('/getBlogs/:id', (req, res) => {
-    // addBlog().then(finalResult => {
-    //     console.log("Blog Added"+finalResult);      
-    // })
-    // .catch(error=>{
-    //     console.log("Error.."+error);      
-    // })
     console.log(JSON.stringify(req.params)+'.........req');
     console.log(JSON.stringify(req.query)+'.........req');
     // res.json(req.body);
@@ -111,31 +105,31 @@ app.get('/getBlogs/:id', (req, res) => {
 });
 
 // C'R'UD 
-// get all Blogs
+// get all Blogs || BEST
 app.get('/getAllBlogs', async (req, res) => {
     result = await blogModel.find();
-    res.send(result);
-    
+    res.send(result);   
 });
 
 // C'R'UD 
 // URL - http://localhost:3000/getBlogsByEmail?email=blogger@anymail.com
 app.get('/getBlogsByEmail', (req, res) => {
-    // let responseObj;
     console.log(req.query.email);
-    
     getBlogsByEmail(req.query.email)
     .then(finalResult => {
         console.log("getBlogsByEmail..."+finalResult);  
-        res.send(finalResult)   
+        if(Object.keys(finalResult).length > 0) {
+            res.send(finalResult);
+        } 
+        else if(Object.keys(finalResult).length === 0){
+            res.send("No data found for the id");  
+        }         
     })
     .catch(error=>{
         console.log("Error.."+error);   
         res.send(error)   
-
     });
     // res.send('Hello from getBlogs express server!!');
-    
 });
 
 // C'R'UD 
@@ -144,15 +138,15 @@ app.get('/getBlogById/:id', (req, res) => {
     getBlogById(req.params.id)
     .then(finalResult => {
         if(Object.keys(finalResult).length > 0) {
-            res.send(finalResult)   
+            res.send(finalResult);   
         } 
         else if(Object.keys(finalResult).length === 0){
-            res.send("No data found for the id")   
+            res.send("No data found for the id");   
         }           
     })
     .catch(error=>{
         console.log("Error.."+error);   
-        res.send(error)   
+        res.send(error);   
     });
 
 });
@@ -173,7 +167,7 @@ app.delete('/deleteBlogById', (req, res) => {
     })
     .catch(error=>{
         console.log("Error.."+error);   
-        res.send(error)   
+        res.send("Cannot Delete Blog! "+error)   
     });
 });
 
@@ -184,12 +178,13 @@ app.post('/addBlog', (req, res) => {
         .then(finalResult => {
             console.log("Blog Added"+finalResult);  
             console.log("Blog Added..."+JSON.stringify(finalResult));      
-
+            res.send("Blog Added!");
         })
         .catch(error=>{
-            console.log("Error.."+error);      
+            console.log("Error.."+error);    
+            res.send("Cannot Add Blog. Please Check your request!");
         });
-    res.send("Blog Added!");
+    
     //res.send('Hello from express server!!'); // doesn't get printed with error Cannot set headers after they are sent to the client
     /* 
         Doosra tareekaa...
@@ -225,11 +220,12 @@ app.put('/updateBlogById/:id', (req, res) => {
     updateBlogById(req.params.id, req.body)
         .then(finalResult => {
             console.log("Blog Updated..."+JSON.stringify(finalResult));      
+            res.send("Blog Updated!");
         })
         .catch(error=>{
-            console.log("Error.."+error);      
+            console.log("Error.."+error);   
+            res.send("Cannot Update Blog. Please Check your request!");
         });
-    res.send("Blog Updated!");
     
 });
 
