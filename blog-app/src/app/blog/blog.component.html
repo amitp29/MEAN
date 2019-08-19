@@ -106,7 +106,53 @@
 <div class="container">
   <div *ngFor = "let blog of blogs">
       <div class="col-md-3">
-        {{blog.title}} is the title
-      </div>
+          <div class="ui card">
+              <div class="content">
+                  <div class="header">{{blog.title}}</div>
+                </div>
+              <div class="content">
+                <h4 class="ui sub header">To contact {{blog.author}}, Please contact <a>{{blog.email}}</a></h4>
+                <div class="ui small feed">
+                  <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                          {{blog.body}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                          <div class="ui checkbox">
+                              <input type="checkbox" tabindex="0" class="hidden">
+                              <label>Hidden</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event">
+                    <div class="content">
+                        <div class="summary">
+                          Votes - {{blog.meta.votes}}
+                        </div>
+                        <div class="summary">
+                          Likes - {{blog.meta.likes}}
+                        </div>
+                        <div class="summary">
+                          Dislikes - {{blog.meta.dislikes}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="extra content">
+                  <div class="fluid ui buttons">
+                      <button class="ui left floated negative button">Delete </button>
+                      <div class="or"></div>
+                      <button class="ui right floated button">Update </button>
+                  </div>
+              </div>
+            </div>
+      </div>        
   </div>
 </div>
