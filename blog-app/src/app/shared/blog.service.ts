@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Blog } from './blog.model';
 // import { Observable } from 'rxjs/Observable';
 // import 'rxjs/Rx';
@@ -13,20 +14,16 @@ import { map } from "rxjs/operators";
 export class BlogService {
   constructor(private http: HttpClient) { }
 
-  getAllBlogs() {/*
-    let headers = new HttpHeaders();
+  getAllBlogs(): Observable<object> {
+    /*let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     headers = headers.append('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
     headers = headers.append('Access-Control-Allow-Origin', '*');
     headers = headers.append('Access-Control-Expose-Headers', 'X-Service-API-Version, X-Service-Name ');
-
-    Access-Control-Allow-Headers:Content-Type, body
-Access-Control-Allow-Methods:POST,PUT,DELETE
-Access-Control-Allow-Origin:http://core.test
-Access-Control-Expose-Headers:X-Service-API-Version, X-Service-Name */
+    */
     // tslint:disable-next-line: max-line-length
     return this.http.get('http://localhost:3000/getAllBlogs') //, {headers: new HttpHeaders().set('Access-Control-Allow-Origin', '*')})
-      .pipe(map(res => res));
+       .pipe(map(res => res));
   }
 
   getBlogsByEmail(email) {
@@ -39,12 +36,12 @@ Access-Control-Expose-Headers:X-Service-API-Version, X-Service-Name */
       .pipe(map(res => res));
   }
 
-  addBlogs(newBlog) {
+  addBlogs(newBlog: object): Observable<object>  {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    headers = headers.append('Access-Control-Allow-Origin', '*');
+    // headers = headers.append('Access-Control-Allow-Origin', '*');
 
-    return this.http.post('http://localhost:3000/addBlog', newBlog)
+    return this.http.post('http://localhost:3000/addBlog', newBlog, {headers})
       .pipe(map(res => res));
   }
 
@@ -54,7 +51,7 @@ Access-Control-Expose-Headers:X-Service-API-Version, X-Service-Name */
   }
 
   updateBlog(id, updatedBlog) {
-    return this.http.put('http://localhost:3000/updateBlogById/'+ id, updatedBlog)
+    return this.http.put('http://localhost:3000/updateBlogById/' + id, updatedBlog)
       .pipe(map(res => res));
   }
 

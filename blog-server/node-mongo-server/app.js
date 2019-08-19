@@ -49,8 +49,7 @@ app.use(logger('dev'));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-// CORS..
-app.use(cors());
+
 
 // CORS ka substitute
 // app.use((req, res, next) => {
@@ -61,7 +60,7 @@ app.use(cors());
 //     next();
 //   });
 
-
+/*
 // You can use a Model to create new documents using `new`:
 let blog1 = {
     title:  "blogTitle",
@@ -86,13 +85,16 @@ async function addBlog1() {
 }
 // You also use a model to create queries:
 // const userFromDb = await UserModel.findOne({ name: 'Foo' }).exec();
+*/
 
+// CORS..
+app.use(cors());
 
 // body-parser snippet || STARTS
 // parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 // body-parser snippet || ENDS
 
 // C'R'UD -  Retrieve One - Method 1 -> http://localhost:3000/getBlogs?id=122

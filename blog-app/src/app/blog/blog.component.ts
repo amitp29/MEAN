@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { BlogService } from '../shared/blog.service';
 import { Blog } from '../shared/blog.model';
 
@@ -35,7 +34,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     this.blogService.getAllBlogs()
-      .subscribe( blogs => this.blogs = blogs)
+      .subscribe( blogs => this.blogs = blogs);
   }
 
 }
