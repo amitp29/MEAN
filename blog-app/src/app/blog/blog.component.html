@@ -2,8 +2,8 @@
     <marquee>Welcome to Blogs App!</marquee>
 </h1>
 <!-- <div class="row"> -->
-    <div class="col-sm-5">  <!-- style="text-align: center"> -->
-        <form class="ui form">
+    <!-- <div class="col-sm-5">  <!-- style="text-align: center"> -->
+      <!--  <form class="ui form">
             <div class="field">
                 <label>Your Blog's Title</label>
                 <input type="text" name="blog-title" placeholder="Blog Title">
@@ -21,7 +21,7 @@
               <textarea rows="4" cols="50" name="comment" placeholder="Enter your blog...">
                 </textarea>
               <!-- <input type="textarea" name="blog-content" placeholder="Blog Content"> -->
-            </div>
+     <!--       </div>
             <div class="field">
               <div class="ui checkbox">
               <input type="checkbox" tabindex="0" class="hidden">
@@ -42,11 +42,11 @@
             </div>
             <button class="btn-success" type="submit">Submit</button>
         </form>
-    </div>
+    </div> -->
 <!-- </div> -->
 
 <br><br><br><br><br><br>
-
+<!-- 
 <div class="ui modal">
         <i class="close icon"></i>
         <div class="header">
@@ -101,4 +101,12 @@
     <div class="extra content">
       <button class="ui button">Join Project</button>
     </div>
+  </div> -->
+
+<div class="container">
+  <div *ngFor = "let blog of blogs">
+      <div class="col-md-3">
+        {{blog.title}} is the title
+      </div>
   </div>
+</div>

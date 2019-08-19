@@ -46,11 +46,21 @@ const blogModel = mongoose.model('Blog', blogSchema); // blogModel is a sub-mode
 app.use(logger('dev'));
 // app.use(json());
 // app.use(urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS..
-// app.use(cors());
+app.use(cors());
+
+// CORS ka substitute
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     // res.header('Access-Control-Allow-Headers', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     next();
+//   });
+
 
 // You can use a Model to create new documents using `new`:
 let blog1 = {
@@ -101,12 +111,13 @@ app.get('/getBlogs/:id', (req, res) => {
     console.log(JSON.stringify(req.query)+'.........req');
     // res.json(req.body);
     res.send('Hello from getBlogById express server!!');
-    
+
 });
 
 // C'R'UD 
 // get all Blogs || BEST
 app.get('/getAllBlogs', async (req, res) => {
+    console.log(req);
     result = await blogModel.find();
     res.send(result);   
 });
