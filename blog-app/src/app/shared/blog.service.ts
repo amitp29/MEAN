@@ -26,12 +26,12 @@ export class BlogService {
        .pipe(map(res => res));
   }
 
-  getBlogsByEmail(email) {
+  getBlogsByEmail(email): Observable<object>  {
     return this.http.get('http://localhost:3000/getBlogsByEmail?email=' + email)
       .pipe(map(res => res));
   }
 
-  getBlogById(id) {
+  getBlogById(id: string): Observable<object>  {
     return this.http.get('http://localhost:3000/getBlogById/' + id)
       .pipe(map(res => res));
   }
@@ -45,12 +45,12 @@ export class BlogService {
       .pipe(map(res => res));
   }
 
-  deleteBlog(id) {
+  deleteBlog(id: string): Observable<object>  {
     return this.http.delete('http://localhost:3000/deleteBlogById/?id=' + id)
       .pipe(map(res => res));
   }
 
-  updateBlog(id, updatedBlog) {
+  updateBlog(id: string, updatedBlog: string): Observable<object>  {
     return this.http.put('http://localhost:3000/updateBlogById/' + id, updatedBlog)
       .pipe(map(res => res));
   }
