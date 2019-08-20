@@ -44,8 +44,7 @@
         </form>
     </div> -->
 <!-- </div> -->
-
-<br><br><br><br><br><br>
+<br><br><br>
 <div class="ui modal">
         <i class="close icon"></i>
         <div class="header">
@@ -73,7 +72,9 @@
                   <div class="header">{{blog.title}}</div>
                 </div>
               <div class="content">
-                <h4 class="ui sub header">To contact {{blog.author}}, Please contact <a>{{blog.email}}</a></h4>
+                <h4 class="ui right floated sub header"> Created on - {{dateConverter(blog.date)}}</h4>
+                <!-- <hr> -->
+                <br>
                 <div class="ui small feed">
                   <div class="event">
                     <div class="content">
@@ -93,28 +94,84 @@
                   </div>
                   <div class="event">
                     <div class="content">
-                        <div class="summary">
-                          Votes - {{blog.meta.votes}}
+                       <div class="summary">
+                            <div class=" ui labeled button" tabindex="0">
+                                <div class="fluid ui inverted blue button">
+                                   <i class="users icon"></i> Votes
+                                </div>
+                                <a class="ui basic blue left pointing label">
+                                   {{blog.meta.votes}}                            
+                                </a>
+                              </div>
                         </div>
                         <div class="summary">
-                          Likes - {{blog.meta.likes}}
+                            <div class="ui labeled button" tabindex="0">
+                                <div class="fluid ui inverted green button">
+                                    <i class="thumbs up outline icon"></i> Likes    
+                                </div>
+                                <a class="ui basic green left pointing label">
+                                    {{blog.meta.likes}}
+                                </a>
+                            </div>
                         </div>
                         <div class="summary">
-                          Dislikes - {{blog.meta.dislikes}}
+                            <div class="ui labeled button" tabindex="0">
+                                <div class="fluid ui inverted secondary button">
+                                    <i class="thumbs down outline icon"></i> Dislikes
+                                </div>
+                                <a class="ui basic secondary left pointing label">
+                                    {{blog.meta.dislikes}}
+                                </a>
+                            </div>
                         </div>
-                      </div>
-                    </div>
+                      </div> <!--
+                      <div class="summary">
+                         <div class="tiny ui vertical buttons">
+                            <div class="ui labeled left floated button" tabindex="0">
+                                <div class="fluid ui inverted primary button">
+                                   <i class="users icon"></i> Votes
+                                   <div class="ui basic blue left pointing label">
+                                     {{blog.meta.votes}}                            
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui labeled left floated button" tabindex="0">
+                                <div class="ui inverted green button">
+                                    <i class="thumbs up outline icon"></i> Likes
+                                    <div class="ui basic green left pointing label">
+                                      {{blog.meta.likes}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui labeled left floated  button" tabindex="0">
+                                <div class="ui inverted secondary button">
+                                    <i class="thumbs down outline icon"></i> Dislikes
+                                    <div class="ui basic secondary left pointing label">
+                                      {{blog.meta.dislikes}}
+                                    </div>
+                                  </div>
+                            </div>
+                         </div>
+
+                      </div>-->
+                    </div> 
                   </div>
                 </div>
               </div>
               <div class="extra content">
                   <div class="fluid ui buttons">
-                      <button class="ui left floated negative button">Delete </button>
-                      <div class="or"></div>
-                      <button class="ui right floated button">Update </button>
+                    <button class="big ui right floated secondary basic button">Update </button>
+                    <!-- <div class=" or"></div> -->
+                    <button class="big ui left floated negative button" (click)="deleteBlog(blog._id)">Delete </button>
                   </div>
               </div>
-            </div>
+              <div class="extra content">
+                  <p>For more info contact : </p>
+                  <p>{{blog.author}} <<a>{{blog.email}}</a>> </p><hr>
+              </div>
+          </div>
       </div>        
   </div>
 </div>

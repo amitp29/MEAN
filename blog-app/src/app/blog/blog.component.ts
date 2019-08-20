@@ -37,4 +37,15 @@ export class BlogComponent implements OnInit {
       .subscribe( blogs => this.blogs = blogs);
   }
 
+  dateConverter(inputBlogDate) {
+    let inputDate = new Date(inputBlogDate);
+    return inputDate.toDateString();
+  }
+
+  deleteBlog(id) {
+    this.blogService.deleteBlogById(id).subscribe();
+    this.ngOnInit();
+  }
+
+
 }

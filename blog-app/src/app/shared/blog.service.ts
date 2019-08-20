@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Blog } from './blog.model';
 // import { Observable } from 'rxjs/Observable';
 // import 'rxjs/Rx';
-import { map } from "rxjs/operators"; 
+import { map, tap } from "rxjs/operators"; 
 // import 'rxjs/add/operator/toPromise';
 
 
@@ -45,9 +45,9 @@ export class BlogService {
       .pipe(map(res => res));
   }
 
-  deleteBlog(id: string): Observable<object>  {
-    return this.http.delete('http://localhost:3000/deleteBlogById/?id=' + id)
-      .pipe(map(res => res));
+  deleteBlogById(id: string): Observable<string | object>  {
+    return this.http.delete('http://localhost:3000/deleteBlogById?id=' + id, {responseType: 'text'})
+      .pipe(tap(data => data));
   }
 
   updateBlog(id: string, updatedBlog: string): Observable<object>  {

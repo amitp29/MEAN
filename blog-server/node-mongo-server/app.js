@@ -165,7 +165,7 @@ app.get('/getBlogById/:id', (req, res) => {
 });
 
 // CRU'D'
-// http://localhost:3000/deleteBlogById/?id=5d564aeab99b4b2338d13bbf
+// http://localhost:3000/deleteBlogById?id=5d564aeab99b4b2338d13bbf
 app.delete('/deleteBlogById', (req, res) => {
     deleteBlogById(req.query.id)
     .then(finalResult => {
