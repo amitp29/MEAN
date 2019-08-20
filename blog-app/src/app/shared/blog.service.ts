@@ -36,18 +36,18 @@ export class BlogService {
       .pipe(map(res => res));
   }
 
-  addBlogs(newBlog: object): Observable<object>  {
+  addBlog(newBlog: object): Observable<string | object>  {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     // headers = headers.append('Access-Control-Allow-Origin', '*');
 
-    return this.http.post('http://localhost:3000/addBlog', newBlog, {headers})
-      .pipe(map(res => res));
+    return this.http.post('http://localhost:3000/addBlog', newBlog, {headers, responseType: 'text'})
+      .pipe(tap(res => res));
   }
 
   deleteBlogById(id: string): Observable<string | object>  {
     return this.http.delete('http://localhost:3000/deleteBlogById?id=' + id, {responseType: 'text'})
-      .pipe(tap(data => data));
+      .pipe(tap(res => res));
   }
 
   updateBlog(id: string, updatedBlog: string): Observable<object>  {

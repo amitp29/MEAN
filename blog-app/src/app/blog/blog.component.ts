@@ -13,7 +13,8 @@ import { Blog } from '../shared/blog.model';
 export class BlogComponent implements OnInit {
   blog: Blog; // form for update blogs
   blogs: any; // array of all blogs
-
+  showModal = false;
+  data: any;
 
   //model se le aaya baaki
   _id: string;
@@ -35,6 +36,10 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this.blogService.getAllBlogs()
       .subscribe( blogs => this.blogs = blogs);
+      /* or
+           subscribe((blogs) => {
+                 this.blogs = blogs;
+             }); */
   }
 
   dateConverter(inputBlogDate) {
@@ -47,5 +52,21 @@ export class BlogComponent implements OnInit {
     this.ngOnInit();
   }
 
+  addBlog(blog) {
+    this.blogService.addBlog(blog).subscribe();
+    this.ngOnInit();
 
+  }
+
+  onSubmitBlog(f) {
+    console.log('inside onSubmitBlog...........' + JSON.stringify(f));
+    this.blogService.addBlog(f).subscribe(data => this.data = data);
+    console.log("this.data...."+this.data);
+    this.blogService.addBlog(f).subscribe();
+    this.ngOnInit();
+  }
+
+  toggleCheck() {
+    this.checked = !this.checked;
+  }
 }

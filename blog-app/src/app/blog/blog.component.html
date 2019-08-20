@@ -1,3 +1,5 @@
+<div>
+
 <h1>
     <marquee>Welcome to Blogs App!</marquee>
 </h1>
@@ -44,25 +46,105 @@
         </form>
     </div> -->
 <!-- </div> -->
-<br><br><br>
-<div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Modal Title
-        </div>
-        <div class="image content">
-            <div class="image">
-            An image can appear on left or an icon
-            </div>
-            <div class="description">
-            A description can appear on the right
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui button">Cancel</div>
-            <div class="ui button">OK</div>
-        </div>
-</div>
+<button (click)="this.showModal = !this.showModal" class="huge fluid ui button">Add a Blog</button>
+<br>
+<!-- <div class="ui segment">
+    <sui-dimmer class="page" [(isDimmed)]="showModal" style="z-index:2;">
+        <h2 class="ui inverted icon header">
+        </h2>
+    </sui-dimmer>
+</div> -->
+<!-- <div *ngIf="this.showModal" class="ui active dimmer" style="z-index:2; height:200%"></div> -->
+
+<sui-modal [isClosable]="true" [isFullScreen]="true" [mustScroll]="true" *ngIf="this.showModal">
+    <!-- <div *ngIf="this.showModal" class="ui fullscreen active modal" style="z-index:3; height:200%"> -->
+    
+  <!-- <div class="ui fullscreen active modal"> -->
+    <!-- <div *ngIf="this.showModal" class="ui blurring raised segment"> -->
+      <!-- <i (click)="this.showModal = !this.showModal" class="close icon"></i> -->
+          <div class="header">
+            Add a blog
+          </div>
+          <div class="scrolling content">
+            <!-- <div class="ui form"> -->
+              <form (ngSubmit)= "onSubmitBlog(f.value)" #f="ngForm">
+                      <label class="form-group">Your Blog's Title   </label>
+                      <input class="form-group" type="text" ngModel name="title" placeholder="Blog Title">
+                  
+                      <label class="form-group"> Your Full Name   </label>
+                      <input class="form-group" type="text" ngModel name="author" placeholder="Full Name" >
+                  
+                      <label class="form-group"> Your Email ID   </label>
+                      <input class="form-group" type="text" name="email" placeholder="Email ID" ngModel>
+                    
+                      <label class="form-group">Your Blog Content   </label>
+                      <textarea class="form-group" rows="7" name="body" ngModel>
+                      </textarea>
+                    <!-- <input type="textarea" name="blog-content" placeholder="Blog Content"> -->
+                      <div>
+                        <input class="form-group" type="checkbox" name="hidden" style="margin-top:12px" ngModel>
+                        <label class="form-group ui checkbox">Hidden</label>
+                      </div>
+                      <br>
+                      <label class="form-group">Votes</label>
+                      <input class="form-group" type="text" name="meta.votes" placeholder="Number of Votes" ngModel>
+                      <label class="form-group">Likes</label>
+                      <input class="form-group" type="text" name="meta.likes" placeholder="Number of Likes" ngModel>
+                      <label class="form-group">Dislikes</label>
+                      <input class="form-group" type="text" name="meta.dislikes" placeholder="Number of Dislikes" ngModel>
+                      <!-- <button class="btn-success" type="submit">Submit</button> -->
+                      <!-- <div class="actions"> -->
+                        <!-- <div (click)="this.showModal = !this.showModal" class="ui button">Cancel</div>
+                          <div (click)="this.showModal = !this.showModal" class="ui button">OK</div> -->
+                          <button (click)="this.showModal = !this.showModal" class="ui right floated red button" >Cancel</button>
+                          <input (click)="f.reset()" class="ui right floated green button" type="submit">
+                          <!-- </div> -->
+                        </form>
+                      <!-- </div> -->
+          <!-- </div> -->
+    </div>
+    <br><br><br><br><br>
+ </sui-modal>
+
+<div class="container">
+
+
+"<form (ngSubmit)= "onSubmitBlog(f.value)" #f="ngForm">
+                      <label class="form-group">Your Blog's Title   </label>
+                      <input class="form-group" type="text" ngModel name="title" placeholder="Blog Title">
+                  
+                      <label class="form-group"> Your Full Name   </label>
+                      <input class="form-group" type="text" ngModel name="author" placeholder="Full Name" >
+                  
+                      <label class="form-group"> Your Email ID   </label>
+                      <input class="form-group" type="text" name="email" placeholder="Email ID" ngModel>
+                    
+                      <label class="form-group">Your Blog Content   </label>
+                      <textarea class="form-group" rows="7" name="body" ngModel>
+                      </textarea>
+                    <!-- <input type="textarea" name="blog-content" placeholder="Blog Content"> -->
+                      <div>
+                        <input class="form-group" type="checkbox" name="hidden" style="margin-top:12px" ngModel>
+                        <label class="form-group ui checkbox">Hidden</label>
+                      </div>
+                      <br>
+                      <label class="form-group">Votes</label>
+                      <input class="form-group" type="text" name="meta.votes" placeholder="Number of Votes" ngModel>
+                      <label class="form-group">Likes</label>
+                      <input class="form-group" type="text" name="meta.likes" placeholder="Number of Likes" ngModel>
+                      <label class="form-group">Dislikes</label>
+                      <input class="form-group" type="text" name="meta.dislikes" placeholder="Number of Dislikes" ngModel>
+                      <!-- <button class="btn-success" type="submit">Submit</button> -->
+                      <!-- <div class="actions"> -->
+                        <!-- <div (click)="this.showModal = !this.showModal" class="ui button">Cancel</div>
+                          <div (click)="this.showModal = !this.showModal" class="ui button">OK</div> -->
+                          <button (click)="this.showModal = !this.showModal" class="ui right floated red button" >Cancel</button>
+                          <input (click)="f.reset()" class="ui right floated green button" type="submit">
+                          <!-- </div> -->
+                        </form>
+                      </div>
+
+
 
 <div class="container">
   <div *ngFor = "let blog of blogs">
@@ -174,4 +256,5 @@
           </div>
       </div>        
   </div>
+</div>
 </div>

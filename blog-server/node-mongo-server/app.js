@@ -119,7 +119,6 @@ app.get('/getBlogs/:id', (req, res) => {
 // C'R'UD 
 // get all Blogs || BEST
 app.get('/getAllBlogs', async (req, res) => {
-    console.log(req);
     result = await blogModel.find();
     res.send(result);   
 });
@@ -127,10 +126,8 @@ app.get('/getAllBlogs', async (req, res) => {
 // C'R'UD 
 // URL - http://localhost:3000/getBlogsByEmail?email=blogger@anymail.com
 app.get('/getBlogsByEmail', (req, res) => {
-    console.log(req.query.email);
     getBlogsByEmail(req.query.email)
     .then(finalResult => {
-        console.log("getBlogsByEmail..."+finalResult);  
         if(Object.keys(finalResult).length > 0) {
             res.send(finalResult);
         } 
@@ -158,7 +155,6 @@ app.get('/getBlogById/:id', (req, res) => {
         }           
     })
     .catch(error=>{
-        console.log("Error.."+error);   
         res.send(error);   
     });
 
@@ -169,8 +165,6 @@ app.get('/getBlogById/:id', (req, res) => {
 app.delete('/deleteBlogById', (req, res) => {
     deleteBlogById(req.query.id)
     .then(finalResult => {
-        console.log("deleteBlogById..."+finalResult);  
-        console.log("Blog Deleted..."+JSON.stringify(finalResult));      
         if(finalResult === null){
             res.send("Cannot delete blog ID-"+req.query.id+". Blog NOT FOUND!");
         }
@@ -179,7 +173,6 @@ app.delete('/deleteBlogById', (req, res) => {
         }
     })
     .catch(error=>{
-        console.log("Error.."+error);   
         res.send("Cannot Delete Blog! "+error)   
     });
 });
@@ -187,6 +180,10 @@ app.delete('/deleteBlogById', (req, res) => {
 // 'C'RUD
 // http://localhost:3000/addBlog
 app.post('/addBlog', (req, res) => {
+    console.log(".............."+JSON.stringify(req.body));
+    console.log(".............."+JSON.stringify(req.body.author));
+    console.log(".............."+JSON.stringify(req.body.email));
+
     addBlogPOST(req.body)
         .then(finalResult => {
             console.log("Blog Added"+finalResult);  
@@ -236,8 +233,7 @@ app.put('/updateBlogById/:id', (req, res) => {
             res.send("Blog Updated!");
         })
         .catch(error=>{
-            console.log("Error.."+error);   
-            res.send("Cannot Update Blog. Please Check your request!");
+            res.send("Cannot Update Blog. Please Check your request!"+ error);
         });
     
 });

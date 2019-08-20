@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {SuiModule} from 'ng2-semantic-ui';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
@@ -11,7 +13,9 @@ import { BlogComponent } from './blog/blog.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    SuiModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
