@@ -44,7 +44,8 @@ export class BlogComponent implements OnInit {
 
   dateConverter(inputBlogDate) {
     let inputDate = new Date(inputBlogDate);
-    return inputDate.toDateString();
+    // return inputDate.toDateString();
+    return inputDate.toString();
   }
 
   deleteBlog(id) {
