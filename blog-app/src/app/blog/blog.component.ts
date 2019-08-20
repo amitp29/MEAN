@@ -52,21 +52,11 @@ export class BlogComponent implements OnInit {
     this.ngOnInit();
   }
 
-  addBlog(blog) {
-    this.blogService.addBlog(blog).subscribe();
-    this.ngOnInit();
-
-  }
-
   onSubmitBlog(f) {
     console.log('inside onSubmitBlog...........' + JSON.stringify(f));
-    this.blogService.addBlog(f).subscribe(data => this.data = data);
-    console.log("this.data...."+this.data);
     this.blogService.addBlog(f).subscribe();
     this.ngOnInit();
   }
 
-  toggleCheck() {
-    this.checked = !this.checked;
-  }
+
 }
